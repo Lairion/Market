@@ -25,8 +25,9 @@ SECRET_KEY = '25f$^j961n60z%i7r!3k&y_c!h1&zf+#ounc#a(y^pa@2i+_g-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = ['*']
 
+AUTH_USER_MODEL = 'users.User'
 
 # Application definition
 
@@ -37,6 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Outsite modules
+    'rest_framework',
+    # My module
+    "orders",
+    "users",
+    "products",
+    "markets"
 ]
 
 MIDDLEWARE = [
@@ -50,6 +58,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Market.urls'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
 
 TEMPLATES = [
     {
